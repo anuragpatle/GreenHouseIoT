@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/8efc1d1b-ff8c-4646-8b64-027cd8f131fc/resourceGroups/rg-greenhouse/providers/Microsoft.Web/sites/dt-greenhouse",
+    "appService.deploySubpath": "build"
+}

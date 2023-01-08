@@ -1,0 +1,28 @@
+{
+  "co2Level": 620,
+  "temperature": 31,
+  "humidityLevel": 32.57,
+  "mositureLevel": 7,
+  "lightCount": 1,
+  "lightCapacity": 20,
+  "lightDuration": 8,
+  "fanStatus": false,
+  "lightingStatus": false,
+  "waterpumpStatus": false,
+  "dehumidifierStatus": false,
+  "cropInfo": {
+    "cropType": "Vegetables",
+    "cropName": "Tomato",
+    "soilphValue": 7.75
+  },
+  "deviceInfo": {
+    "deviceId": "smart-detector-1.0",
+    "deviceVersion": 1,
+    "deviceTimestamp": "2022-11-07T11:22:19.5857796Z"
+  },
+  "locationInfo": {
+    "lat": 18.516726,
+    "lon": 73.856255,
+    "timezone": "Coordinated Universal Time"
+  }
+}

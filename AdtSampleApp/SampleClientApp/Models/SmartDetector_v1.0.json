@@ -1,0 +1,90 @@
+{
+  "@id": "dtmi:tsystem:DigitalTwins:Smartdetector;1",
+  "@type": "Interface",
+  "displayName": "Smart Detector interface model",
+  "@context": "dtmi:dtdl:context;2",
+  "contents": [
+      {
+      "@type": "Property",
+      "name": "Temperature",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "CO2level",
+      "schema": "double"
+    },
+	{
+      "@type": "Property",
+      "name": "Humiditylevel",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "Moisturelevel",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "WaterPumpStatus",
+      "schema": "boolean"
+    },
+	 {
+      "@type": "Property",
+      "name": "DehumidifierStatus",
+      "schema": "boolean"
+    },
+	 {
+      "@type": "Property",
+      "name": "LightingStatus",
+      "schema": "boolean"
+    },
+	 {
+      "@type": "Property",
+      "name": "FanStatus",
+      "schema": "boolean"
+    },
+	{
+		"@type":"Property",
+		"name":"deviceinfo",
+		"schema":{
+			"@type":"Object",
+			"fields": [
+			{
+				"name" :"deviceid",
+				"schema" :"string"
+			},
+			{
+				"name" :"deviceversion",
+				"schema" :"double"
+			},
+			{
+				"name" :"devicetimestamp",
+				"schema" :"dateTime"
+			}
+			]
+		}
+	},
+{
+		"@type":"Property",
+		"name":"cropinfo",
+		"schema":{
+			"@type":"Object",
+			"fields": [
+			{
+				"name" :"croptype",
+				"schema" :"string"
+			},
+			{
+				"name" :"cropname",
+				"schema" :"string"
+			},
+			{
+				"name" :"soilphvalue",
+				"schema" :"double"
+			}
+			]
+		}
+	} 	 	
+  ]
+}

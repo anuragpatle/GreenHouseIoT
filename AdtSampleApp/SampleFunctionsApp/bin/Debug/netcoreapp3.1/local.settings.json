@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": "false",
+  "Values": {
+    "ADT_SERVICE_URL": "",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "AzureSignalRConnectionString": "Endpoint=https://sr-greenhouse.service.signalr.net;AccessKey=38UYHNrpHXXKRy0fEfcLKWG+rgKkAjbAsJSdjl9Tqps=;Version=1.0;"
+  }
+}

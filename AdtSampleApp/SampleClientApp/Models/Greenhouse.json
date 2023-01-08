@@ -1,0 +1,24 @@
+{
+  "@id": "dtmi:tsystem:DigitalTwins:Grower;1",
+  "@type": "Interface",
+  "displayName": "Greenhouse",
+  "@context": "dtmi:dtdl:context;2",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "farmername",
+      "schema": "string"
+    },
+	{
+      "@type": "Property",
+      "name": "address",
+      "schema": "string"
+    },
+    {
+      "@type": "Relationship",
+      "name": "hasSmartDetection",
+	  "displayName": "Has",
+      "target": "dtmi:tsystem:DigitalTwins:Smartdetector;1"
+    }
+  ]
+}
