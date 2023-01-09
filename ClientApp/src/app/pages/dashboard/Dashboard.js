@@ -8,13 +8,24 @@ import { FAN_STATUS_NOTIFICATION, DE_HUMIDIFIER_STATUS_NOTIFICATION, LIGHTNING_S
 import LineChart from '../../component/Charts/LineChart';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import { FaRegFrownOpen, FaRegGrinBeamSweat, FaRegGrinBeam, FaRegGrinStars } from "react-icons/fa";
+// import { makeFanOFF, makeFanON } from './SimulatedDevice';
+// import { Client } from 'azure-iothub';
+import axios from 'axios' 
+
 
 const Dashboard = () => {
     const dispatch = useDispatch();
+
     const [signalRHubConnection, setSignalRHubConnection] = React.useState(null);
     const { data } = useSelector((state) => state.dashboard);
     const { fanStatus, deHumidifiertatus, lightningStatus, waterPumpStatus } = useSelector((state) => state.notification);
+    const iotUrl = "http://localhost:8080/";
 
+
+    const callOperateFan=(message)=>{
+        axios.get(iotUrl+''+message)
+            .then(response => console.log(response.data));
+    }
 
     //TODO: IOTHUB api needs to call in this function
     const setFlagToIotDashBoard = (flag) => {
@@ -22,7 +33,13 @@ const Dashboard = () => {
     }
     const handleChange = (e) => {
         const isFanFlagOn = e;
+        console.log("e: ", e)
         setFlagToIotDashBoard(isFanFlagOn)
+        if (isFanFlagOn) {
+            callOperateFan("makeFanOFF")
+        } else {
+            callOperateFan("makeFanON")
+        }
     }
 
     React.useEffect(() => {
