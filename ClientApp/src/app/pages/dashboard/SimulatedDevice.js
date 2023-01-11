@@ -5,7 +5,7 @@ var Message = require('azure-iot-common').Message;
 const http = require("http");
 
 const host = 'localhost';
-const port = 8000;
+const port = 80;
 
 // import { Client } from 'azure-iothub';
 // import { Message } from 'azure-iot-common';
@@ -69,7 +69,7 @@ app.get('/makeFanON', (req, res) => {
 });
 
 // Listen to the App Engine-specified port, or 8080 otherwise
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
 });

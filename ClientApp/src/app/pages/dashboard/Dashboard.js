@@ -19,7 +19,7 @@ const Dashboard = () => {
     const [signalRHubConnection, setSignalRHubConnection] = React.useState(null);
     const { data } = useSelector((state) => state.dashboard);
     const { fanStatus, deHumidifiertatus, lightningStatus, waterPumpStatus } = useSelector((state) => state.notification);
-    const iotUrl = "http://localhost:8080/";
+    const iotUrl = "http://localhost:80/";
 
 
     const callOperateFan=(message)=>{
@@ -34,6 +34,7 @@ const Dashboard = () => {
     const handleChange = (e) => {
         const isFanFlagOn = e;
         console.log("e: ", e)
+        console.log("fanStatus: ", fanStatus)
         setFlagToIotDashBoard(isFanFlagOn)
         if (isFanFlagOn) {
             callOperateFan("makeFanOFF")
@@ -42,9 +43,16 @@ const Dashboard = () => {
         }
     }
 
+    // React.useEffect(() => {
+    //     const newConnection = new HubConnectionBuilder()
+    //         .withUrl(process.env.REACT_APP_SIGNAL_R_API)
+    //         .build();
+    //     setSignalRHubConnection(newConnection);
+    // }, []);
+
     React.useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl(process.env.REACT_APP_SIGNAL_R_API)
+            .withUrl("https://fa-greenhouse.azurewebsites.net/api")
             .build();
         setSignalRHubConnection(newConnection);
     }, []);
