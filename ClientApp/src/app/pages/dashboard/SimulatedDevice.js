@@ -68,6 +68,54 @@ app.get('/makeFanON', (req, res) => {
   res.send('Hello! Fan made ON!');
 });
 
+app.get('/makeWaterpumpON', (req, res) => {
+  serviceClient.open(function (err) {
+    if (err) {
+      console.error('Could not connect: ' + err.message);
+    } else {
+      console.log('Service client connected');
+      serviceClient.getFeedbackReceiver(receiveFeedback);
+      // var message = new Message("MAKE-FAN-ON");
+      // var message = new Message("MAKE-FAN-OFF");
+      // var message = new Message("MAKE-FAN-ON");
+      // var message = new Message("MAKE-LIGHTS-OFF");
+      // var message = new Message("MAKE-LIGHTS-ON");
+      // var message = new Message("MAKE-SPRINKLER-OFF");
+      var message = new Message("MAKE-SPRINKLER-ON");
+  
+      message.ack = 'full';
+      message.messageId = "MAKE-SPRINKLER-ON";
+      console.log('Sending message: ' + message.getData());
+      serviceClient.send(targetDevice, message, printResultFor('send'));
+    }
+  });
+  res.send('Hello! Waterpump made ON!');
+});
+
+app.get('/makeWaterpumpOFF', (req, res) => {
+  serviceClient.open(function (err) {
+    if (err) {
+      console.error('Could not connect: ' + err.message);
+    } else {
+      console.log('Service client connected');
+      serviceClient.getFeedbackReceiver(receiveFeedback);
+      // var message = new Message("MAKE-FAN-ON");
+      // var message = new Message("MAKE-FAN-OFF");
+      // var message = new Message("MAKE-FAN-ON");
+      // var message = new Message("MAKE-LIGHTS-OFF");
+      // var message = new Message("MAKE-LIGHTS-ON");
+      // var message = new Message("MAKE-SPRINKLER-OFF");
+      var message = new Message("MAKE-SPRINKLER-OFF");
+  
+      message.ack = 'full';
+      message.messageId = "MAKE-SPRINKLER-OFF";
+      console.log('Sending message: ' + message.getData());
+      serviceClient.send(targetDevice, message, printResultFor('send'));
+    }
+  });
+  res.send('Hello! Waterpump made OFF!');
+});
+
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {

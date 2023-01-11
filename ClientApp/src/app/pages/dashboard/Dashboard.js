@@ -10,8 +10,8 @@ import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import { FaRegFrownOpen, FaRegGrinBeamSweat, FaRegGrinBeam, FaRegGrinStars } from "react-icons/fa";
 // import { makeFanOFF, makeFanON } from './SimulatedDevice';
 // import { Client } from 'azure-iothub';
-import axios from 'axios' 
-
+import axios from 'axios'; 
+import d from  "../../../assets/images/3d.jpg" 
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Dashboard = () => {
     const iotUrl = "http://localhost:80/";
 
 
-    const callOperateFan=(message)=>{
+    const callOperateIoTDevices=(message)=>{
         axios.get(iotUrl+''+message)
             .then(response => console.log(response.data));
     }
@@ -36,10 +36,20 @@ const Dashboard = () => {
         console.log("e: ", e)
         console.log("fanStatus: ", fanStatus)
         setFlagToIotDashBoard(isFanFlagOn)
-        if (isFanFlagOn) {
-            callOperateFan("makeFanOFF")
+        if (fanStatus) {
+            callOperateIoTDevices("makeFanOFF")
         } else {
-            callOperateFan("makeFanON")
+            callOperateIoTDevices("makeFanON")
+        }
+    }
+
+    const handleWaterpumpChange = (e) => {
+
+        console.log("waterPumpStatus: ", waterPumpStatus)
+        if (waterPumpStatus) {
+            callOperateIoTDevices("makeWaterpumpOFF")
+        } else {
+            callOperateIoTDevices("makeWaterpumpON")
         }
     }
 
@@ -181,7 +191,7 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className="card">
+                        <div className="card" style={{backgroundImage: `url(${d})`, backgroundPosition: "center"}}>
                             <div className="card-body">
                                 <div className="clearfix mb-4">
                                     <h4 className="card-title float-left">Smart Device Activities</h4>
@@ -201,12 +211,12 @@ const Dashboard = () => {
                                     <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <BootstrapSwitchButton
                                             checked={waterPumpStatus}
-                                            onlabel='Water Pump is on'
-                                            offlabel='Water Pump is off'
+                                            onlabel='Sprinkler is on'
+                                            offlabel='Sprinkler is off'
                                             onstyle="danger"
                                             width={235}
                                             height={50}
-                                            onChange={handleChange}
+                                            onChange={handleWaterpumpChange}
                                         />
                                     </div>
                                 </div>
