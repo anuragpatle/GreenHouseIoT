@@ -82,6 +82,30 @@ app.get('/makeSprinklerOFF', (req, res) => {
 
 });
 
+app.get('/makeLight1OFF', (req, res) => {
+
+  callChangeState(res, (res, states) => {
+    console.log("states", states)
+    states.isLight1ON = false;
+    changeState(states);
+      
+    res.json(states);
+  });
+
+});
+
+app.get('/makeLight1ON', (req, res) => {
+
+  callChangeState(res, (res, states) => {
+    console.log("states", states)
+    states.isLight1ON = true;
+    changeState(states);
+      
+    res.json(states);
+  });
+
+});
+
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {

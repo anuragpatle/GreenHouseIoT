@@ -116,7 +116,7 @@ app.get('/makeWaterpumpOFF', (req, res) => {
   res.send('Hello! Waterpump made OFF!');
 });
 
-// Listen to the App Engine-specified port, or 8080 otherwise
+// Listen to the App Engine-specified port, or 80 otherwise
 const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
